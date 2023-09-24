@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel=" icon"
+      type="x-icon"
+      href="/img/information_icon-icons.com_52388.ico"
+    />
+    <link rel="stylesheet" href="/input.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&family=Open+Sans&family=Raleway:wght@700&family=Rancho&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+
+      .accordian_body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .fa-plus {
+        display: inline;
+      }
+
+      .fa-minus {
+        display: none;
+      }
+
+      .active .fa-plus {
+        display: none;
+      }
+
+      .active .fa-minus {
+        display: inline;
+      }
+      /* Style for the button */
+      .button {
+        position: relative;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      /* Style for the bottom border */
+      .button::after {
+        content: "";
+        position: absolute;
+        left: 12;
+        bottom: 0;
+        width: 80%;
+        height: 2px; /* Initial border height */
+        background-color: #e74c3c;
+        transition: width 0.3s; /* Transition effect for width */
+      }
+
+      /* Hover effect to shorten the border */
+      .button:hover::after {
+        width: 50%; /* Adjust this value to control the shortened width */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation start -->
+    <nav
+      class="sticky top-0 z-10 px-5 py-3 bg-white shadow md:flex md:items-center md:justify-between"
+    >
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-[Poppins] cursor-pointer">
+          <a href="/index.html">
+            <img class="inline h-16" src="/img/atsHeaderLogo.jpg"
+          /></a>
+        </span>
+
+        <span class="block mx-2 text-3xl cursor-pointer md:hidden">
+          <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+        </span>
+      </div>
+
+      <ul
+        class="opacity-0 top-[-400px] transition-all ease-in duration-500 absolute bg-white w-full left-0 md:flex md:items-center md:static md:w-auto md:py-0 py-4 md:pl-0 md:opacity-100 md:space-x-6 pl-5 sm:pl-0"
+      >
+        <li class="mx-2 my-6 md:my-0">
+          <div class="cursor-pointer group">
+            <div class="flex items-center justify-between space-x-5">
+              <a
+                class="text-base duration-500 menu-hover hover:text-orange-500"
+                href="/index.html"
+              >
+                HOME
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="mx-2 my-6 md:my-0">
+          <div class="cursor-pointer group">
+            <div class="flex items-center justify-between space-x-5">
+              <a
+                class="text-base duration-500 menu-hover hover:text-orange-500"
+              >
+                SERVICES
+              </a>
+            </div>
+            <div
+              class="absolute flex flex-col invisible px-3 py-1 mt-8 text-sm duration-1000 bg-white border-t-2 border-orange-500 rounded group-hover:visible"
+            >
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/ui.html"
+                >UI/UX Design</a
+              >
+
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/websiteDevelopment.html"
+                >Website Development</a
+              >
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/eCommerce.html"
+                >E-commerce
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/customSoftwareDevelopment.html"
+                >Custom Software Development
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/dataScience.html"
+                >Data Science
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/mobileAppDevelopment.html"
+                >Mobile App Development
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/graphicDesigning.html"
+                >Graphic Designing
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/SLA.html"
+                >SLA
+              </a>
+              <a
+                class="block py-1 my-2 border-b border-gray-100 hover:text-black md:mx-2"
+                href="/services/contentWriting.html"
+                >Content Writing
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <div class="cursor-pointer group">
+            <div class="flex items-center justify-between space-x-5">
+              <a
+                href="/career.html"
+                class="text-base duration-500 menu-hover hover:text-orange-500"
+              >
+                CAREER
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <div class="cursor-pointer group">
+            <div class="flex items-center justify-between space-x-5">
+              <a
+                href="/blog.html"
+                class="text-base duration-500 menu-hover hover:text-orange-500"
+              >
+                BLOG
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="mx-2 my-6 md:my-0">
+          <div class="cursor-pointer group">
+            <div class="flex items-center justify-between space-x-5">
+              <a
+                class="text-base duration-500 menu-hover hover:text-orange-500"
+                href="/aboutUs.html"
+              >
+                ABOUT US
+              </a>
+            </div>
+          </div>
+        </li>
+        <li
+          class="my-6 ml-2 mr-4 text-base duration-500 md:my-0 hover:text-orange-500"
+        >
+          <a href="/contactUs.html"> CONTACT US </a>
+        </li>
+
+        <a
+          href="/appointment.html"
+          class="py-4 tracking-widest text-white transition duration-300 ease-in-out delay-150 bg-orange-500 rounded px-9 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
+        >
+          Appointment →
+        </a>
+      </ul>
+    </nav>
+    <!-- Navigation end -->
+
+    <!-- Content -->
+    <div
+      class="bg-blue-950 flex flex-col justify-center items-center h-[250px]"
+    >
+      <h1 class="text-5xl text-white">Faq</h1>
+      <div class="flex items-center">
+        <a href="../index.html" class="my-5 text-orange-400">Home</a>
+        <i class="mx-3 mt-1 text-xs text-white fa-solid fa-angle-right"></i>
+        <h1 class="text-white text-md">Faq</h1>
+      </div>
+    </div>
+
+    <div class="h-auto my-12 lg:my-28">
+      <div class="flex flex-col text-center">
+        <h4 class="mt-6 tracking-wide text-orange-400 text-md lg:mt-28">
+          F A Q <span class="">'S</span>
+        </h4>
+        <h1
+          class="my-3 text-3xl lg:text-5xl mx-auto max-w-[750px] leading-tight md:leading-normal"
+        >
+          Read Quesiton's Answers
+          <span class="my-3 md:inline">For Your Help</span>
+        </h1>
+      </div>
+      <div class="flex flex-col justify-between mx-8 lg:flex-row">
+        <div class="my-6 lg:my-20 h-auto w-full lg:w-[600px] space-y-6">
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q1: What does Advance Transformation Solutions specialize
+                in?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-4 tracking-wide text-gray-500 lg:mx-5">
+                We specialize in a range of services including software
+                development, mobile app development, graphic design, content
+                writing, data science, and SLA services.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q2: Where is Advance Transformation Solutions based?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Our company is headquartered in [Location], but we serve clients
+                globally.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q3: How can I contact Advance Transformation Solutions?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                You can reach us through our website's contact form, email us at
+                [Your Email Address], or call us at [Your Phone Number].
+                Software Development
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q4: What types of software development services do you
+                offer?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                We offer custom software development, desktop application
+                development, web application development, and mobile app
+                development using Flutter.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q5: Can you work with both startups and established
+                businesses?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Absolutely! We work with startups, small businesses, and large
+                enterprises, tailoring our services to meet their specific
+                needs.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q6: What industries have you worked with for software
+                development?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                We have experience working with various industries, including
+                finance, e-commerce, healthcare, and more. Mobile App
+                Development
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q7: Which platforms do you develop mobile apps for?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                We develop mobile apps for both iOS and Android platforms using
+                Flutter for cross-platform compatibility.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:my-20 h-auto w-full lg:w-[600px] space-y-6">
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q8: Do you provide ongoing maintenance and support for mobile
+                apps?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Yes, we offer post-launch support and maintenance to ensure your
+                mobile app remains up-to-date and performs optimally. Graphic
+                Design
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q9: What types of graphic design services do you offer?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Our graphic design services cover logo design, branding, print
+                design, web graphics, social media graphics, and marketing
+                collateral.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q10: Can you create custom designs that align with our brand
+                identity?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Absolutely! We tailor our designs to match your brand's unique
+                identity and messaging. Content Writing
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q11: What types of content do you write?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                We provide content writing services for web content, blog posts,
+                social media content, product descriptions, email marketing, and
+                more.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q12: Is the content SEO-optimized?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Yes, we incorporate SEO best practices to ensure that your
+                content is search engine-friendly and has the potential for
+                higher visibility. SLA Services
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q13: What is an SLA (Service Level Agreement)?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                An SLA is a formal agreement outlining the level of service,
+                response times, and performance metrics that clients can expect
+                from us.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q14: When should I consider using your SLA services?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                You should consider our SLA services if you're not satisfied
+                with your existing vendor's performance or if you want to ensure
+                consistent and reliable service levels.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg"
+                >Q15: Can you customize the SLA to match our specific
+                needs?</span
+              >
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                Yes, our SLAs are fully customizable to align with your unique
+                requirements and objectives.
+              </p>
+            </div>
+          </div>
+          <div class="h-auto">
+            <div
+              class="flex items-center justify-between py-2 duration-1000 bg-gray-200 accordian_header hover:text-white hover:bg-orange-400 hover:cursor-pointer"
+            >
+              <span class="mx-5 text-sm lg:text-lg">Still Have Questions?</span>
+              <i class="m-1 mx-5 text-lg fa-solid fa-plus"></i>
+              <i class="m-1 mx-5 text-lg fa-solid fa-minus"></i>
+            </div>
+            <div class="bg-gray-200 accordian_body">
+              <p class="py-4 mx-5 tracking-wide text-gray-500">
+                If you have any other questions or need further information,
+                please don't hesitate to contact us directly. We're here to
+                assist you and provide the information you need to make informed
+                decisions about our services.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content End -->
+
+    <!-- FOOTER SECTION -->
+    <section
+      class="h-[500px] lg:h-[200px] justify-center bg-black bg-opacity-80 mt-52 flex flex-col lg:flex-row"
+    >
+      <div class="flex pt-20 mx-10 space-x-10">
+        <div>
+          <i
+            class="flex items-center justify-center w-20 h-20 text-3xl text-orange-400 border fa-solid fa-location-dot"
+          ></i>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="text-orange-400">LOCATION</h1>
+          <p class="w-full md:w-[250px] lg:w-auto text-white mt-1">
+            G-10/4, Islamabad
+          </p>
+        </div>
+      </div>
+      <div class="flex pt-20 mx-10 space-x-10">
+        <div>
+          <i
+            class="flex items-center justify-center w-20 h-20 text-3xl text-orange-400 border fa-sharp fa-solid fa-clock"
+          ></i>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="text-orange-400">Working Hours</h1>
+          <p class="w-full md:w-[250px] lg:w-auto text-white mt-1">
+            Monday - Saturday 09:00 - 5:00 (GMT+5)<br />
+            Sunday closed
+          </p>
+        </div>
+      </div>
+      <div class="flex pt-20 mx-10 space-x-10">
+        <div>
+          <i
+            class="flex items-center justify-center w-20 h-20 text-3xl text-orange-400 border fa-solid fa-square-phone"
+          ></i>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="text-orange-400">Contacts</h1>
+          <p class="w-full md:w-[250px] lg:w-auto text-white mt-1">
+            support@advancesols.com
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER PART 2  -->
+    <section class="h-[1500px] md:h-[500px] bg-black flex flex-col md:flex-row">
+      <div class="py-20 mx-8 h-96 w-80 md:w-96">
+        <img src="/img/ats_logo_rm.png" alt="" class="object-fill h-32" />
+        <p class="my-10 text-white">
+          Transforming Ideas into Innovation, Excellence into Reality
+        </p>
+        <div class="flex">
+          <input
+            type="text"
+            class="text-white h-[50px] w-[300px] border border-orange-500 bg-transparent p-2 placeholder-white"
+            placeholder="Subscribe"
+          />
+          <button
+            class="text-white duration-1000 bg-orange-500 w-14 h-13 hover:bg-blue-800"
+          >
+            <i class="text-white fa-sharp fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row">
+        <div class="flex flex-col py-16 mx-8 text-white md:py-20">
+          <h1 class="my-2 text-3xl md:my-10">Quick Links</h1>
+          <a
+            href="/aboutUs.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >About Us</a
+          >
+          <a
+            href="/career.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >Career</a
+          >
+
+          <a href="/faqs.html" class="my-4 duration-1000 hover:text-orange-400"
+            >FAQs</a
+          >
+          <a
+            href="/contactUs.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >Contact Us</a
+          >
+        </div>
+        <div class="flex flex-col py-2 mx-8 text-white md:py-20">
+          <h1 class="my-10 text-3xl">IT Services</h1>
+          <a
+            href="/services/ui.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >UI/UX Designing</a
+          >
+          <a
+            href="/services/contentWriting.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >Content Writing</a
+          >
+          <a
+            href="/services/SLA.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >SLA</a
+          >
+          <a
+            href="/services/graphicDesigning.html"
+            class="my-4 duration-1000 hover:text-orange-400"
+            >Graphic Designing</a
+          >
+        </div>
+        <div>
+          <p class="py-5 pt-2 mx-4 md:pt-40">
+            <!-- <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.3602138961996!2d73.01918797462855!3d33.67373583762361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df9527c0c1393f%3A0xb68f111c2a4ed971!2sIMPACT%20Business%20Center!5e0!3m2!1sen!2s!4v1693755018375!5m2!1sen!2s"
+                width="350"
+                height="150"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe> -->
+          </p>
+          <div class="flex mx-8 space-x-2">
+            <h1 class="mt-2 text-white">Share:</h1>
+            <a href="">
+              <i
+                class="flex items-center justify-center w-10 h-10 text-xl text-orange-400 duration-700 border cursor-pointer fa-brands fa-facebook hover:text-white"
+              ></i>
+            </a>
+            <a href="">
+              <i
+                class="flex items-center justify-center w-10 h-10 text-xl text-orange-400 duration-700 border cursor-pointer fa-brands fa-twitter hover:text-white"
+              ></i>
+            </a>
+            <a href="">
+              <i
+                class="flex items-center justify-center w-10 h-10 text-xl text-orange-400 duration-700 border cursor-pointer fa-brands fa-instagram hover:text-white"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer part 3 -->
+    <footer
+      class="flex items-center justify-center h-16 bg-black bg-opacity-80"
+    >
+      <h1 class="text-center text-white">
+        Copyright 2023 AdvanceSols All Rights Reserved.
+      </h1>
+    </footer>
+    <!-- FOOTER SECTION END -->
+
+    <script>
+      const accordionHeaders = document.querySelectorAll(".accordian_header");
+      accordionHeaders.forEach((accordianheader) => {
+        accordianheader.addEventListener("click", (event) => {
+          accordianheader.classList.toggle("active");
+          accordianheader.classList.toggle("bg-orange-400");
+          accordianheader.classList.toggle("text-white");
+          const accordianbody = accordianheader.nextElementSibling;
+
+          if (accordianheader.classList.contains("active")) {
+            accordianbody.style.maxHeight = accordianbody.scrollHeight + "px";
+          } else {
+            accordianbody.style.maxHeight = 0;
+          }
+        });
+      });
+
+      //for navbar button start
+      function Menu(e) {
+        let list = document.querySelector("ul");
+        e.name === "menu"
+          ? ((e.name = "close"),
+            list.classList.add("top-[80px]"),
+            list.classList.add("opacity-100"))
+          : ((e.name = "menu"),
+            list.classList.remove("top-[80px]"),
+            list.classList.remove("opacity-100"));
+      }
+      //for navbar button end
+    </script>
+  </body>
+</html>

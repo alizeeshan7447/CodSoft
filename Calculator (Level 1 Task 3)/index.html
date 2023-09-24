@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calculator</title>
+</head>
+<body>  
+    <div class="p-2 pb-2 m-5 mx-5 bg-blue-400 lg:mx-auto lg:my-20 lg:items-center lg:justify-between lg:w-3/12 rounded-xl lg:h-3/6 ">
+        <div class="p-3 mx-2 my-5 text-4xl text-right rounded bg-slate-200"> 
+    <form name = "form1">  
+      <input id = "calc" type ="text" class="w-full text-right lg:h-3/6 bg-slate-200" name = "answer">  
+    </div>
+    <div class="inline-flex text-4xl text-white"> 
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "7" onclick = "form1.answer.value += '7' ">  
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "8" onclick = "form1.answer.value += '8' ">  
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "9" onclick = "form1.answer.value += '9' ">  
+         <input type="button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value="C" onclick="clearInput()">
+        </div>
+
+        <div class="inline-flex my-3 text-4xl text-white">
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "4" onclick = "form1.answer.value += '4' ">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "5" onclick = "form1.answer.value += '5' ">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "6" onclick = "form1.answer.value += '6' ">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "-" onclick = "form1.answer.value += '-' ">  
+        </div>
+
+        <div class="inline-flex mb-3 text-4xl text-white">
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "1" onclick = "form1.answer.value += '1' ">  
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "2" onclick = "form1.answer.value += '2' ">  
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "3" onclick = "form1.answer.value += '3' ">  
+        <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "+" onclick = "form1.answer.value += '+' ">   
+    
+    </div>
+       
+        <div class="inline-flex mb-3 text-4xl text-white">
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "0" onclick = "form1.answer.value += '0'">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "÷" onclick = "form1.answer.value += '/' ">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "x" onclick = "form1.answer.value += '*' ">  
+            <input type = "button" class="w-16 h-16 mx-2 bg-blue-600 rounded-lg hover:bg-blue-700" value = "=" onclick = "form1.answer.value = eval(form1.answer.value) ">  
+
+        </div>
+    </form>  
+    </div> 
+    <script>
+        function clearInput() {
+            document.form1.answer.value = "";
+        }
+    </script> 
+    </body>  
+</html>
